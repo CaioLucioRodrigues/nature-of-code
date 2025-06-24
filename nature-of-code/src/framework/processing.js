@@ -23,9 +23,11 @@ export function stroke(r, g, b) {
 }
 
 export function point(x, y) {
+  ctx.fillStyle = "black";
   ctx.beginPath();
   ctx.arc(x, y, 1, 0, 2 * Math.PI);
   ctx.fill();
+  ctx.stroke(); 
 }
 
 export function line(x1, y1, x2, y2) {
