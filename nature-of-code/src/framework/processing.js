@@ -4,12 +4,24 @@ export let height = 600;
 let ctx, canvas;
 export let frameCount = 0;
 
-export function createCanvas(w, h) {
+export function createCanvas(w, h, container = null) {
   width = w; height = h;
   canvas = document.createElement('canvas');
   canvas.width = width;
   canvas.height = height;
-  document.body.appendChild(canvas);
+  
+  // Se um container for especificado, adiciona lá. Caso contrário, procura por .chapter-content
+  const targetContainer = container || document.querySelector('.chapter-content');
+  
+  if (targetContainer) {
+    // Limpa o conteúdo anterior
+    targetContainer.innerHTML = '';
+    targetContainer.appendChild(canvas);
+  } else {
+    // Fallback para o body se não encontrar o container
+    document.body.appendChild(canvas);
+  }
+  
   ctx = canvas.getContext('2d');
 }
 

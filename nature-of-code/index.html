@@ -2,10 +2,44 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nature of Code JS</title>
+    <link rel="stylesheet" href="/src/styles.css">
   </head>
   <body>
-    <button onclick="loadChapter('chapter1')">Capítulo 1</button>
+    <div class="container">
+      <div class="header-section">
+        <h1>Nature of Code</h1>
+        <p class="subtitle">
+          Explore os fundamentos da programação criativa através da simulação de fenômenos naturais
+        </p>
+      </div>
+      
+      <div class="chapter-content">
+        <p>Selecione um capítulo abaixo para começar</p>
+      </div>
+      
+      <div class="chapter-grid">
+        <button class="chapter-btn" onclick="loadChapter('chapter1')">
+          📐 Capítulo 1: Vetores
+        </button>
+        <button class="chapter-btn" onclick="loadChapter('chapter2')">
+          🌊 Capítulo 2: Forças
+        </button>
+        <button class="chapter-btn" onclick="loadChapter('chapter3')">
+          🎯 Capítulo 3: Oscilação
+        </button>
+        <button class="chapter-btn" onclick="loadChapter('chapter4')">
+          💫 Capítulo 4: Sistemas de Partículas
+        </button>
+      </div>
+      
+      <div class="footer">
+        <p>Baseado no livro "The Nature of Code" por Daniel Shiffman</p>
+        <p><a href="emoji-library.html" target="_blank">📚 Abrir Biblioteca de Emojis</a></p>
+      </div>
+    </div>
+    
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

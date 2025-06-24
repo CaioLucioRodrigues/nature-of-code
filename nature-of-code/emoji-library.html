@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca de Emojis - Nature of Code</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 2rem;
+            color: #333;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 2rem;
+        }
+        
+        .category {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 12px;
+        }
+        
+        .category h2 {
+            color: #764ba2;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+        
+        .emoji-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .emoji-item {
+            text-align: center;
+            padding: 0.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .emoji-item:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .emoji {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+        
+        .emoji-name {
+            font-size: 0.7rem;
+            color: #666;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1rem;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            outline: none;
+        }
+        
+        .copy-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Biblioteca de Emojis - Nature of Code</h1>
+        
+        <input type="text" class="search-box" placeholder="🔍 Pesquisar emoji..." onkeyup="filterEmojis(this.value)">
+        
+        <div class="copy-notification" id="copyNotification">
+            ✅ Emoji copiado para a área de transferência!
+        </div>
+
+        <div class="category">
+            <h2>🔢 Matemática e Ciência</h2>
+            <div class="emoji-grid">
+                <div class="emoji-item" onclick="copyEmoji('📐')"><span class="emoji">📐</span><span class="emoji-name">Régua</span></div>
+                <div class="emoji-item" onclick="copyEmoji('📏')"><span class="emoji">📏</span><span class="emoji-name">Régua Longa</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🧮')"><span class="emoji">🧮</span><span class="emoji-name">Ábaco</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🔬')"><span class="emoji">🔬</span><span class="emoji-name">Microscópio</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🧪')"><span class="emoji">🧪</span><span class="emoji-name">Tubo de Ensaio</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🧬')"><span class="emoji">🧬</span><span class="emoji-name">DNA</span></div>
+                <div class="emoji-item" onclick="copyEmoji('⚛️')"><span class="emoji">⚛️</span><span class="emoji-name">Átomo</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🔭')"><span class="emoji">🔭</span><span class="emoji-name">Telescópio</span></div>
+                <div class="emoji-item" onclick="copyEmoji('📊')"><span class="emoji">📊</span><span class="emoji-name">Gráfico</span></div>
+                <div class="emoji-item" onclick="copyEmoji('📈')"><span class="emoji">📈</span><span class="emoji-name">Crescente</span></div>
+                <div class="emoji-item" onclick="copyEmoji('📉')"><span class="emoji">📉</span><span class="emoji-name">Decrescente</span></div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>🌊 Natureza e Forças</h2>
+            <div class="emoji-grid">
+                <div class="emoji-item" onclick="copyEmoji('🌊')"><span class="emoji">🌊</span><span class="emoji-name">Onda</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🌪️')"><span class="emoji">🌪️</span><span class="emoji-name">Tornado</span></div>
+                <div class="emoji-item" onclick="copyEmoji('⚡')"><span class="emoji">⚡</span><span class="emoji-name">Raio</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🔥')"><span class="emoji">🔥</span><span class="emoji-name">Fogo</span></div>
+                <div class="emoji-item" onclick="copyEmoji('❄️')"><span class="emoji">❄️</span><span class="emoji-name">Floco de Neve</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🌀')"><span class="emoji">🌀</span><span class="emoji-name">Ciclone</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🌬️')"><span class="emoji">🌬️</span><span class="emoji-name">Vento</span></div>
+                <div class="emoji-item" onclick="copyEmoji('💨')"><span class="emoji">💨</span><span class="emoji-name">Rajada</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🌍')"><span class="emoji">🌍</span><span class="emoji-name">Terra</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🌑')"><span class="emoji">🌑</span><span class="emoji-name">Lua Nova</span></div>
+                <div class="emoji-item" onclick="copyEmoji('☀️')"><span class="emoji">☀️</span><span class="emoji-name">Sol</span></div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>🎯 Movimento e Oscilação</h2>
+            <div class="emoji-grid">
+                <div class="emoji-item" onclick="copyEmoji('🎯')"><span class="emoji">🎯</span><span class="emoji-name">Alvo</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🎪')"><span class="emoji">🎪</span><span class="emoji-name">Circo</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🎠')"><span class="emoji">🎠</span><span class="emoji-name">Carrossel</span></div>
+                <div class="emoji-item" onclick="copyEmoji('⚽')"><span class="emoji">⚽</span><span class="emoji-name">Bola</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🏀')"><span class="emoji">🏀</span><span class="emoji-name">Basquete</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🎾')"><span class="emoji">🎾</span><span class="emoji-name">Tênis</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🎲')"><span class="emoji">🎲</span><span class="emoji-name">Dado</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🔄')"><span class="emoji">🔄</span><span class="emoji-name">Rotação</span></div>
+                <div class="emoji-item" onclick="copyEmoji('↩️')"><span class="emoji">↩️</span><span class="emoji-name">Curva Esquerda</span></div>
+                <div class="emoji-item" onclick="copyEmoji('↪️')"><span class="emoji">↪️</span><span class="emoji-name">Curva Direita</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🌀')"><span class="emoji">🌀</span><span class="emoji-name">Espiral</span></div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>💫 Partículas e Efeitos</h2>
+            <div class="emoji-grid">
+                <div class="emoji-item" onclick="copyEmoji('💫')"><span class="emoji">💫</span><span class="emoji-name">Estrela Cadente</span></div>
+                <div class="emoji-item" onclick="copyEmoji('✨')"><span class="emoji">✨</span><span class="emoji-name">Brilho</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🌟')"><span class="emoji">🌟</span><span class="emoji-name">Estrela</span></div>
+                <div class="emoji-item" onclick="copyEmoji('⭐')"><span class="emoji">⭐</span><span class="emoji-name">Estrela Branca</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🔆')"><span class="emoji">🔆</span><span class="emoji-name">Brilho Intenso</span></div>
+                <div class="emoji-item" onclick="copyEmoji('💥')"><span class="emoji">💥</span><span class="emoji-name">Explosão</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🎆')"><span class="emoji">🎆</span><span class="emoji-name">Fogos</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🎇')"><span class="emoji">🎇</span><span class="emoji-name">Faísca</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🟡')"><span class="emoji">🟡</span><span class="emoji-name">Círculo Amarelo</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🔴')"><span class="emoji">🔴</span><span class="emoji-name">Círculo Vermelho</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🔵')"><span class="emoji">🔵</span><span class="emoji-name">Círculo Azul</span></div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>🎨 Cores e Formas</h2>
+            <div class="emoji-grid">
+                <div class="emoji-item" onclick="copyEmoji('🎨')"><span class="emoji">🎨</span><span class="emoji-name">Paleta</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🖌️')"><span class="emoji">🖌️</span><span class="emoji-name">Pincel</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🖍️')"><span class="emoji">🖍️</span><span class="emoji-name">Giz de Cera</span></div>
+                <div class="emoji-item" onclick="copyEmoji('✏️')"><span class="emoji">✏️</span><span class="emoji-name">Lápis</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🖊️')"><span class="emoji">🖊️</span><span class="emoji-name">Caneta</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🔺')"><span class="emoji">🔺</span><span class="emoji-name">Triângulo Vermelho</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🔻')"><span class="emoji">🔻</span><span class="emoji-name">Triângulo Invertido</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🔶')"><span class="emoji">🔶</span><span class="emoji-name">Losango Laranja</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🔷')"><span class="emoji">🔷</span><span class="emoji-name">Losango Azul</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🟠')"><span class="emoji">🟠</span><span class="emoji-name">Círculo Laranja</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🟢')"><span class="emoji">🟢</span><span class="emoji-name">Círculo Verde</span></div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>🔧 Tecnologia e Programação</h2>
+            <div class="emoji-grid">
+                <div class="emoji-item" onclick="copyEmoji('💻')"><span class="emoji">💻</span><span class="emoji-name">Laptop</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🖥️')"><span class="emoji">🖥️</span><span class="emoji-name">Desktop</span></div>
+                <div class="emoji-item" onclick="copyEmoji('⌨️')"><span class="emoji">⌨️</span><span class="emoji-name">Teclado</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🖱️')"><span class="emoji">🖱️</span><span class="emoji-name">Mouse</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🔧')"><span class="emoji">🔧</span><span class="emoji-name">Chave</span></div>
+                <div class="emoji-item" onclick="copyEmoji('⚙️')"><span class="emoji">⚙️</span><span class="emoji-name">Engrenagem</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🔩')"><span class="emoji">🔩</span><span class="emoji-name">Parafuso</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🛠️')"><span class="emoji">🛠️</span><span class="emoji-name">Ferramentas</span></div>
+                <div class="emoji-item" onclick="copyEmoji('📱')"><span class="emoji">📱</span><span class="emoji-name">Celular</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🔌')"><span class="emoji">🔌</span><span class="emoji-name">Tomada</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🔋')"><span class="emoji">🔋</span><span class="emoji-name">Bateria</span></div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>🎮 Jogos e Diversão</h2>
+            <div class="emoji-grid">
+                <div class="emoji-item" onclick="copyEmoji('🎮')"><span class="emoji">🎮</span><span class="emoji-name">Controle</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🕹️')"><span class="emoji">🕹️</span><span class="emoji-name">Joystick</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🎯')"><span class="emoji">🎯</span><span class="emoji-name">Alvo</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🎲')"><span class="emoji">🎲</span><span class="emoji-name">Dado</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🎪')"><span class="emoji">🎪</span><span class="emoji-name">Circo</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🎨')"><span class="emoji">🎨</span><span class="emoji-name">Arte</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🎭')"><span class="emoji">🎭</span><span class="emoji-name">Teatro</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🎪')"><span class="emoji">🎪</span><span class="emoji-name">Entretenimento</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🎡')"><span class="emoji">🎡</span><span class="emoji-name">Roda Gigante</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🎢')"><span class="emoji">🎢</span><span class="emoji-name">Montanha Russa</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🎠')"><span class="emoji">🎠</span><span class="emoji-name">Carrossel</span></div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>🔍 Símbolos e Indicadores</h2>
+            <div class="emoji-grid">
+                <div class="emoji-item" onclick="copyEmoji('🔍')"><span class="emoji">🔍</span><span class="emoji-name">Lupa</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🔎')"><span class="emoji">🔎</span><span class="emoji-name">Lupa Direita</span></div>
+                <div class="emoji-item" onclick="copyEmoji('❤️')"><span class="emoji">❤️</span><span class="emoji-name">Coração</span></div>
+                <div class="emoji-item" onclick="copyEmoji('💚')"><span class="emoji">💚</span><span class="emoji-name">Coração Verde</span></div>
+                <div class="emoji-item" onclick="copyEmoji('💙')"><span class="emoji">💙</span><span class="emoji-name">Coração Azul</span></div>
+                <div class="emoji-item" onclick="copyEmoji('💜')"><span class="emoji">💜</span><span class="emoji-name">Coração Roxo</span></div>
+                <div class="emoji-item" onclick="copyEmoji('⚠️')"><span class="emoji">⚠️</span><span class="emoji-name">Aviso</span></div>
+                <div class="emoji-item" onclick="copyEmoji('✅')"><span class="emoji">✅</span><span class="emoji-name">Check</span></div>
+                <div class="emoji-item" onclick="copyEmoji('❌')"><span class="emoji">❌</span><span class="emoji-name">X</span></div>
+                <div class="emoji-item" onclick="copyEmoji('⭕')"><span class="emoji">⭕</span><span class="emoji-name">Círculo Vermelho</span></div>
+                <div class="emoji-item" onclick="copyEmoji('🚀')"><span class="emoji">🚀</span><span class="emoji-name">Foguete</span></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyEmoji(emoji) {
+            navigator.clipboard.writeText(emoji).then(() => {
+                showCopyNotification();
+            });
+        }
+
+        function showCopyNotification() {
+            const notification = document.getElementById('copyNotification');
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 2000);
+        }
+
+        function filterEmojis(searchTerm) {
+            const categories = document.querySelectorAll('.category');
+            const searchLower = searchTerm.toLowerCase();
+
+            categories.forEach(category => {
+                const emojiItems = category.querySelectorAll('.emoji-item');
+                let hasVisibleEmojis = false;
+
+                emojiItems.forEach(item => {
+                    const emojiName = item.querySelector('.emoji-name').textContent.toLowerCase();
+                    const emoji = item.querySelector('.emoji').textContent;
+                    
+                    if (emojiName.includes(searchLower) || emoji.includes(searchTerm)) {
+                        item.style.display = 'block';
+                        hasVisibleEmojis = true;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                category.style.display = hasVisibleEmojis ? 'block' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>
