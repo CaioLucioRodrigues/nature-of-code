@@ -1,19 +1,15 @@
 import { createCanvas, background, stroke, point, width, height, loop } from '../../src/framework/processing.js';
+import { Walker } from './walker.js';
+
+var walker;
 
 export function setup() {
-  createCanvas(800, 600);
-  stroke(0, 0, 0);
+  createCanvas(300, 300);
+  walker = new Walker();  
+  background(255, 255, 255);
 }
 
-let lastDraw = 0;
-
-export function draw() {
-  const now = Date.now();
-  if (now - lastDraw < 1000) return; // só executa a cada 1000ms (1s)
-  lastDraw = now;
-  
-  background(255, 255, 255);
-  for (let i = 0; i < 100; i++) {
-    point(Math.random() * width, Math.random() * height);
-  }
+export function draw() {  
+  walker.step();
+  walker.display();
 }
