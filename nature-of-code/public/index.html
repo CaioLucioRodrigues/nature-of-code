@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>The Nature of Code - JS</title>
+</head>
+<body>
+  <nav>
+    <button onclick="loadChapter('chapter1')">Capítulo 1</button>
+    <button onclick="loadChapter('chapter2')">Capítulo 2</button>
+    <!-- Adicione mais capítulos aqui -->
+  </nav>
+  <script type="module">
+    let currentScript;
+    async function loadChapter(chapter) {
+      if (currentScript) currentScript.remove(); // remove canvas anterior
+      document.querySelectorAll('canvas').forEach(c => c.remove());
+      await import(`/chapters/${chapter}/index.js`);
+      // ou com ../chapters
+    }
+    window.loadChapter = loadChapter;
+    // Opcional: Carrega o capítulo 1 por padrão
+    loadChapter('chapter1');
+  </script>
+</body>
+</html>
