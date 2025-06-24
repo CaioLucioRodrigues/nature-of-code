@@ -4,6 +4,7 @@ export class Walker {
     constructor() {
         this.x = width / 2;
         this.y = height / 2;
+        this.stepSize = 1; 
     }
 
     display() {
@@ -12,10 +13,28 @@ export class Walker {
     }
 
     step() {
-        const choice = Math.floor(Math.random() * 4);
-        if (choice === 0) this.x += 1; // move right
-        else if (choice === 1) this.x -= 1; // move left
-        else if (choice === 2) this.y += 1; // move down
-        else if (choice === 3) this.y -= 1; // move up
+        this.stepSize = 2;
+
+        const stepx = Math.floor(Math.random() * 3) - 1; // -1, 0, or 1
+        const stepy = Math.floor(Math.random() * 3) - 1; // -1, 0, or 1
+
+        this.x += stepx * this.stepSize;
+        this.y += stepy * this.stepSize;
+
+        if (this.x < 0) {
+            this.x = 0;
+        }
+
+        if (this.x >= width) {
+            this.x = width - 1;
+        }
+
+        if (this.y < 0) {
+            this.y = 0;
+        }
+
+        if (this.y >= height) {
+            this.y = height - 1;
+        }
     }
 }
